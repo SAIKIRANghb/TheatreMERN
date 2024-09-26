@@ -10,7 +10,7 @@ function AdminSlotUpdateForm() {
     useEffect(() => {
         const fetchSlotDetails = async () => {
             try {
-                const response = await fetch(`http://localhost:5000/slots/${slotId}`);
+                const response = await fetch(`http://localhost:5001/slots/${slotId}`);
                 if (!response.ok) throw new Error('Failed to fetch slot details');
                 const data = await response.json();
                 setTime(data.time);
@@ -29,7 +29,7 @@ function AdminSlotUpdateForm() {
         e.preventDefault();
 
         try {
-            const response = await fetch(`http://localhost:5000/slots/${slotId}`, {
+            const response = await fetch(`http://localhost:5001/slots/${slotId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

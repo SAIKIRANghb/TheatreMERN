@@ -1,144 +1,3 @@
-// import React, { useState, useEffect } from 'react';
-
-// function ScreenTable() {
-//     const [screens, setScreens] = useState([]); // State to hold the screens data
-
-//     // Fetch screens from backend
-//     useEffect(() => {
-//         const fetchScreens = async () => {
-//             try {
-//                 const response = await fetch('http://localhost:5000/screens'); // Adjust the API endpoint as needed
-//                 if (!response.ok) {
-//                     throw new Error('Failed to fetch screens');
-//                 }
-//                 const data = await response.json();
-//                 setScreens(data); // Update state with fetched screens
-//             } catch (error) {
-//                 console.error('Error fetching screens:', error);
-//             }
-//         };
-
-//         fetchScreens(); // Call the fetch function
-//     }, []); // Empty dependency array means this runs once when the component mounts
-
-//     return (
-//         <div className="admin-screens-panel">
-//             <h1>Screens</h1>
-//             <table id="admin-screens-table" className="admin-table">
-//                 <thead>
-//                     <tr>
-//                         <th>Screen No</th>
-//                         <th>Theatre</th>
-//                         <th>Number of Rows</th>
-//                         <th>Seats per Row</th>
-//                     </tr>
-//                 </thead>
-//                 <tbody>
-//                     {screens.map(screen => (
-//                         <tr key={screen._id}>
-//                             <td>{screen.screenNo}</td>
-//                             <td>{screen.theatre ? screen.theatre.theatrename : 'N/A'}</td> {/* Ensure theatre is not undefined */}
-//                             <td>{screen.dim?.NumRows || 'N/A'}</td> {/* Optional chaining for safety */}
-//                             <td>{screen.dim?.SeatsPerRow || 'N/A'}</td> {/* Optional chaining for safety */}
-//                         </tr>
-//                     ))}
-//                 </tbody>
-//             </table>
-//         </div>
-//     );
-// }
-
-// export default ScreenTable;
-// import React, { useState, useEffect } from 'react';
-// import { useNavigate } from 'react-router-dom'; // For navigation to update/add screens
-
-// function ScreenTable() {
-//     const [screens, setScreens] = useState([]); // State to hold the screens data
-//     const navigate = useNavigate(); // For navigation
-
-//     // Fetch screens from backend
-//     useEffect(() => {
-//         const fetchScreens = async () => {
-//             try {
-//                 const response = await fetch('http://localhost:5000/screens'); // Adjust the API endpoint as needed
-//                 if (!response.ok) {
-//                     throw new Error('Failed to fetch screens');
-//                 }
-//                 const data = await response.json();
-//                 setScreens(data); // Update state with fetched screens
-//             } catch (error) {
-//                 console.error('Error fetching screens:', error);
-//             }
-//         };
-
-//         fetchScreens(); // Call the fetch function
-//     }, []); // Empty dependency array means this runs once when the component mounts
-
-//     // Handle delete screen
-//     const handleDelete = async (screenId) => {
-//         try {
-//             const response = await fetch(`http://localhost:5000/screens/${screenId}`, {
-//                 method: 'DELETE',
-//             });
-//             if (!response.ok) {
-//                 throw new Error('Failed to delete screen');
-//             }
-//             // After deletion, fetch the updated screens
-//             setScreens(prevScreens => prevScreens.filter(screen => screen._id !== screenId));
-//         } catch (error) {
-//             console.error('Error deleting screen:', error);
-//         }
-//     };
-
-//     return (
-//         <div className="admin-screens-panel">
-//             <h1>Screens</h1>
-//             <button 
-//                 className="admin-add-btn" 
-//                 onClick={() => navigate('/admin/add-screen')}
-//             >
-//                 Add New Screen
-//             </button>
-//             <table id="admin-screens-table" className="admin-table">
-//                 <thead>
-//                     <tr>
-//                         <th>Screen No</th>
-//                         <th>Theatre</th>
-//                         <th>Number of Rows</th>
-//                         <th>Seats per Row</th>
-//                         <th>Actions</th> {/* New column for buttons */}
-//                     </tr>
-//                 </thead>
-//                 <tbody>
-//                     {screens.map(screen => (
-//                         <tr key={screen._id}>
-//                             <td>{screen.screenNo}</td>
-//                             <td>{screen.theatre ? screen.theatre.theatrename : 'N/A'}</td> {/* Ensure theatre is not undefined */}
-//                             <td>{screen.dim?.NumRows || 'N/A'}</td> {/* Optional chaining for safety */}
-//                             <td>{screen.dim?.SeatsPerRow || 'N/A'}</td> {/* Optional chaining for safety */}
-//                             <td>
-//                                 <button 
-//                                     className="admin-update-btn" 
-//                                     onClick={() => navigate(`/admin/screens/update/${screen._id}`)}
-//                                 >
-//                                     Update
-//                                 </button>
-//                                 <button 
-//                                     className="admin-delete-btn" 
-//                                     onClick={() => handleDelete(screen._id)}
-//                                 >
-//                                     Delete
-//                                 </button>
-//                             </td>
-//                         </tr>
-//                     ))}
-//                 </tbody>
-//             </table>
-//         </div>
-//     );
-// }
-
-// export default ScreenTable;
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -151,7 +10,7 @@ function ScreenTable() {
     useEffect(() => {
         const fetchTheatres = async () => {
             try {
-                const response = await fetch('http://localhost:5000/theatres'); // Fetch the theatres from API
+                const response = await fetch('http://localhost:5001/theatres'); // Fetch the theatres from API
                 if (!response.ok) {
                     throw new Error('Failed to fetch theatres');
                 }
@@ -174,7 +33,7 @@ function ScreenTable() {
     useEffect(() => {
         const fetchScreens = async () => {
             try {
-                const response = await fetch('http://localhost:5000/screens');  // Fetch the screens from API
+                const response = await fetch('http://localhost:5001/screens');  // Fetch the screens from API
                 if (!response.ok) {
                     throw new Error('Failed to fetch screens');
                 }
@@ -192,7 +51,7 @@ function ScreenTable() {
     // Handle delete screen
     const handleDelete = async (screenId) => {
         try {
-            const response = await fetch(`http://localhost:5000/screens/${screenId}`, {
+            const response = await fetch(`http://localhost:5001/screens/${screenId}`, {
                 method: 'DELETE',
             });
             if (!response.ok) {

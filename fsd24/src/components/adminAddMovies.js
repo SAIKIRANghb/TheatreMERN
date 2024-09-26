@@ -19,7 +19,7 @@ function AdminMovies() {
     useEffect(() => {
         const fetchTheatres = async () => {
             try {
-                const response = await fetch('http://localhost:5000/theatres');
+                const response = await fetch('http://localhost:5001/theatres');
                 if (!response.ok) {
                     throw new Error('Failed to fetch theatres');
                 }
@@ -47,7 +47,7 @@ function AdminMovies() {
                 throw new Error('Theatre ID is undefined or invalid');
             }
 
-            const response = await fetch(`http://localhost:5000/screensQuery?theatreId=${theatreId}`);
+            const response = await fetch(`http://localhost:5001/screensQuery?theatreId=${theatreId}`);
             
             if (!response.ok) {
                 throw new Error('Failed to fetch screens');
@@ -108,7 +108,7 @@ function AdminMovies() {
                 screenId: selectedScreen,
                 cast,
             };
-            const response = await fetch('http://localhost:5000/movies', {
+            const response = await fetch('http://localhost:5001/movies', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

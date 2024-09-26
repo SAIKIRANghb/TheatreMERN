@@ -12,7 +12,7 @@ const AdminScreens = () => {
     useEffect(() => {
         const fetchTheatres = async () => {
             try {
-                const response = await fetch('http://localhost:5000/theatres');
+                const response = await fetch('http://localhost:5001/theatres');
                 if (!response.ok) throw new Error('Failed to fetch theatres');
                 const data = await response.json();
                 const map = {};
@@ -62,7 +62,7 @@ const AdminScreens = () => {
         };
 
         try {
-            const response = await fetch('http://localhost:5000/screens', {
+            const response = await fetch('http://localhost:5001/screens', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

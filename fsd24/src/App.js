@@ -17,7 +17,7 @@ const App = () => {
   useEffect(() => {
     const fetchAllTheatres = async () => {
       try {
-        const response = await fetch('http://localhost:5000/theatres');
+        const response = await fetch('http://localhost:5001/theatres');
         const data = await response.json();
         setTheatres(data);
       } catch (error) {

@@ -13,7 +13,7 @@ function SlotTable() {
 
     useEffect(() => {
         const fetchMovies = async () => {
-            const response = await fetch('http://localhost:5000/movies');
+            const response = await fetch('http://localhost:5001/movies');
             if (!response.ok) throw new Error('Failed to fetch movies');
             const data = await response.json();
             const movieMap = {};
@@ -24,7 +24,7 @@ function SlotTable() {
         };
 
         const fetchTheatres = async () => {
-            const response = await fetch('http://localhost:5000/theatres');
+            const response = await fetch('http://localhost:5001/theatres');
             if (!response.ok) throw new Error('Failed to fetch theatres');
             const data = await response.json();
             const theatreMap = {};
@@ -35,7 +35,7 @@ function SlotTable() {
         };
 
         const fetchScreens = async () => {
-            const response = await fetch('http://localhost:5000/screens');
+            const response = await fetch('http://localhost:5001/screens');
             if (!response.ok) throw new Error('Failed to fetch screens');
             const data = await response.json();
             const screenMap = {};
@@ -47,7 +47,7 @@ function SlotTable() {
 
         const fetchSlots = async () => {
             try {
-                const response = await fetch('http://localhost:5000/slots');
+                const response = await fetch('http://localhost:5001/slots');
                 if (!response.ok) throw new Error('Failed to fetch slots');
                 const data = await response.json();
                 setSlots(data);
@@ -68,7 +68,7 @@ function SlotTable() {
     const handleDeleteSlot = async (id) => {
         if (window.confirm("Are you sure you want to delete this slot?")) {
             try {
-                const response = await fetch(`http://localhost:5000/slots/${id}`, {
+                const response = await fetch(`http://localhost:5001/slots/${id}`, {
                     method: 'DELETE',
                 });
                 if (!response.ok) throw new Error('Failed to delete slot');

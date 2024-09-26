@@ -18,10 +18,10 @@ export default function Theatre({ theatre }) {
       setFilteredMovies([]);
 
       try {
-        const theatreResponse = await axios.get(`http://localhost:5000/theatres/name/${theatre}`);
+        const theatreResponse = await axios.get(`http://localhost:5001/theatres/name/${theatre}`);
         const theatreId = theatreResponse.data._id;
 
-        const moviesResponse = await axios.get(`http://localhost:5000/moviesByTheatre?theatreId=${theatreId}`);
+        const moviesResponse = await axios.get(`http://localhost:5001/moviesByTheatre?theatreId=${theatreId}`);
 
         const uniqueMoviesMap = new Map();
         moviesResponse.data.forEach(movie => {

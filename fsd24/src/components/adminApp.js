@@ -89,10 +89,10 @@ export default function AdminApp() {
         <Sidebar />
         <div style={{ width: '85%', margin: '3%' }}>
           <Routes>
-          <Route path="/theatres/update/:id" element={<GeneralizedUpdateForm endpoint="http://localhost:5000/theatres" initialData={initialTheatreData} inputTypes={inputTypes} next = {'theatres'} />} />
-          <Route path="/movies/update/:id" element={<GeneralizedUpdateForm endpoint="http://localhost:5000/movies" initialData={initialMovieData} inputTypes={movieInputTypes} next = {'movies'}/>} />
-          <Route path="/screens/update/:id" element={<ScreenUpdateForm endpoint="http://localhost:5000/screens" initialData={initialScreenData} inputTypes={screenInputTypes} next={'screens'} />} />
-          <Route path="/slots/update/:id" element={<SlotUpdateForm endpoint="http://localhost:5000/slots" next={'slots'} />} />
+          <Route path="/theatres/update/:id" element={<GeneralizedUpdateForm endpoint="http://localhost:5001/theatres" initialData={initialTheatreData} inputTypes={inputTypes} next = {'theatres'} />} />
+          <Route path="/movies/update/:id" element={<GeneralizedUpdateForm endpoint="http://localhost:5001/movies" initialData={initialMovieData} inputTypes={movieInputTypes} next = {'movies'}/>} />
+          <Route path="/screens/update/:id" element={<ScreenUpdateForm endpoint="http://localhost:5001/screens" initialData={initialScreenData} inputTypes={screenInputTypes} next={'screens'} />} />
+          <Route path="/slots/update/:id" element={<SlotUpdateForm endpoint="http://localhost:5001/slots" next={'slots'} />} />
 
           <Route path="/slots/add" element={<AddSlot />} />
           <Route path="/theatres/add" element={<AddTheatres />} />

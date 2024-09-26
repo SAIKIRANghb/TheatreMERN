@@ -127,7 +127,7 @@ const Navbar = () => {
   useEffect(() => {
     const fetchTheatres = async () => {
       try {
-        const response = await fetch('http://localhost:5000/theatres'); // Replace with your actual API endpoint
+        const response = await fetch('http://localhost:5001/theatres'); // Replace with your actual API endpoint
         const data = await response.json();
         console.log(data)
         setTheatres(data);

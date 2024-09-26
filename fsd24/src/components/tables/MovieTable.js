@@ -12,7 +12,7 @@ function MovieTable() {
     useEffect(() => {
         const fetchMovies = async () => {
             try {
-                const response = await fetch('http://localhost:5000/movies'); // Adjust the API endpoint as needed
+                const response = await fetch('http://localhost:5001/movies'); // Adjust the API endpoint as needed
                 if (!response.ok) {
                     throw new Error('Failed to fetch movies');
                 }
@@ -25,7 +25,7 @@ function MovieTable() {
 
         const fetchTheatres = async () => {
             try {
-                const response = await fetch('http://localhost:5000/theatres'); // Fetch theatres
+                const response = await fetch('http://localhost:5001/theatres'); // Fetch theatres
                 if (!response.ok) {
                     throw new Error('Failed to fetch theatres');
                 }
@@ -43,7 +43,7 @@ function MovieTable() {
 
         const fetchScreens = async () => {
             try {
-                const response = await fetch('http://localhost:5000/screens'); // Fetch screens
+                const response = await fetch('http://localhost:5001/screens'); // Fetch screens
                 if (!response.ok) {
                     throw new Error('Failed to fetch screens');
                 }
@@ -68,7 +68,7 @@ function MovieTable() {
     // Function to handle delete movie
     const handleDelete = async (id) => {
         try {
-            const response = await fetch(`http://localhost:5000/movies/${id}`, {
+            const response = await fetch(`http://localhost:5001/movies/${id}`, {
                 method: 'DELETE',
             });
             if (!response.ok) {
