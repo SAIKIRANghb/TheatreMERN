@@ -21,6 +21,7 @@ exports.createSlot = async (req, res) => {
         date,
         screen: screenId,
       });
+      console.log('slot created')
       const savedslot = await slot.save();
       console.log(savedslot)
       res.status(201).send(slot);

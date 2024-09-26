@@ -1,3 +1,90 @@
+// import React, { useState, useEffect } from 'react';
+// import { useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
+
+// function TheatreTable() {
+//     const [theatres, setTheatres] = useState([]);
+//     const [loading, setLoading] = useState(true);
+//     const [error, setError] = useState(null);
+//     const navigate = useNavigate(); // Initialize the navigate function
+
+//     // Fetch theatres from backend
+//     useEffect(() => {
+//         const fetchTheatres = async () => {
+//             try {
+//                 const response = await fetch('http://localhost:5000/theatres'); // Adjust the API endpoint as needed
+//                 if (!response.ok) {
+//                     throw new Error('Network response was not ok');
+//                 }
+//                 const data = await response.json();
+//                 setTheatres(data);
+//             } catch (error) {
+//                 setError(error.message);
+//                 console.error('Error fetching theatres:', error);
+//             } finally {
+//                 setLoading(false); // Set loading to false after fetching
+//             }
+//         };
+
+//         fetchTheatres();
+//     }, []);
+
+//     // Handle theatre deletion
+//     const handleDelete = async (theatreId) => {
+//         try {
+//             const response = await fetch(`/api/theatres/${theatreId}`, {
+//                 method: 'DELETE',
+//             });
+//             if (!response.ok) {
+//                 throw new Error('Failed to delete the theatre');
+//             }
+//             // Update state to remove deleted theatre
+//             setTheatres(theatres.filter(theatre => theatre._id !== theatreId));
+//         } catch (error) {
+//             setError(error.message);
+//             console.error('Error deleting theatre:', error);
+//         }
+//     };
+
+//     // Handle theatre update navigation
+//     const handleUpdate = (theatreId) => {
+//         navigate(`/admin/theatres/update/${theatreId}`); // Navigate to the update form
+//     };
+
+//     return (
+//         <div className="admin-theatres-panel">
+//             <h1>Theatres</h1>
+//             {loading ? (
+//                 <p>Loading theatres...</p>
+//             ) : error ? (
+//                 <p style={{ color: 'red' }}>Error: {error}</p>
+//             ) : (
+//                 <table id="admin-theatres-table" className="admin-table">
+//                     <thead>
+//                         <tr>
+//                             <th>Theatre Name</th>
+//                             <th>Location</th>
+//                             <th>Actions</th> {/* New Actions Column */}
+//                         </tr>
+//                     </thead>
+//                     <tbody>
+//                         {theatres.map(theatre => (
+//                             <tr key={theatre._id}>
+//                                 <td>{theatre.theatrename}</td>
+//                                 <td>{theatre.location}</td>
+//                                 <td>
+//                                     <button onClick={() => handleUpdate(theatre._id)}>Update</button>
+//                                     <button onClick={() => handleDelete(theatre._id)}>Delete</button>
+//                                 </td>
+//                             </tr>
+//                         ))}
+//                     </tbody>
+//                 </table>
+//             )}
+//         </div>
+//     );
+// }
+
+// export default TheatreTable;
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
 
@@ -12,7 +99,7 @@ function TheatreTable() {
     useEffect(() => {
         const fetchTheatres = async () => {
             try {
-                const response = await fetch('http://localhost:5001/theatres'); // Adjust the API endpoint as needed
+                const response = await fetch('http://localhost:5000/theatres'); // Adjust the API endpoint as needed
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
@@ -32,7 +119,7 @@ function TheatreTable() {
     // Handle theatre deletion
     const handleDelete = async (theatreId) => {
         try {
-            const response = await fetch(`http://localhost:5001/theatres/${theatreId}`, {
+            const response = await fetch(`http://localhost:5000/theatres/${theatreId}`, {
                 method: 'DELETE',
             });
             if (!response.ok) {

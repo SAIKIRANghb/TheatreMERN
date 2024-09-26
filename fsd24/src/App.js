@@ -17,7 +17,7 @@ const App = () => {
   useEffect(() => {
     const fetchAllTheatres = async () => {
       try {
-        const response = await fetch('http://localhost:5001/theatres');
+        const response = await fetch('http://localhost:5000/theatres');
         const data = await response.json();
         setTheatres(data);
       } catch (error) {
@@ -56,7 +56,7 @@ const App = () => {
             {console.log(theatre.theatrename)}
             <Route path={`/${theatre.theatrename}`} element={<Theatres theatre={theatre.theatrename} />} />
             <Route path={`/${theatre.theatrename}/:movie/:screen/:timings`} element={<Booking theatre={theatre.theatrename} theatreId={theatre._id} />} />
-            <Route path={`/${theatre.theatrename}/:movie`} element={<MoviePage theatre={theatre.theatrename} />} />
+            <Route path={`/${theatre.theatrename}/:movieId`} element={<MoviePage theatre={theatre.theatrename} />} />
           </Fragment>
         ))}
 

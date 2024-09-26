@@ -15,7 +15,7 @@ function AdminSlots() {
     useEffect(() => {
         const fetchTheatres = async () => {
             try {
-                const response = await fetch('http://localhost:5001/theatres');
+                const response = await fetch('http://localhost:5000/theatres');
                 const data = await response.json();
                 const theatres = {};
                 data.forEach(theatre => {
@@ -40,7 +40,7 @@ function AdminSlots() {
 
         if (selectedTheatreId) {
             try {
-                const response = await fetch(`http://localhost:5001/screens?theatreId=${selectedTheatreId}`);
+                const response = await fetch(`http://localhost:5000/screens?theatreId=${selectedTheatreId}`);
                 const data = await response.json();
                 
                 // Ensure only the screens for the selected theatre are displayed
@@ -64,7 +64,7 @@ const handleScreenChange = async (e) => {
 
     if (theatreId && selectedScreenId) {
         try {
-            const response = await fetch(`http://localhost:5001/moviesByTS?theatreId=${theatreId}&screenId=${selectedScreenId}`);
+            const response = await fetch(`http://localhost:5000/moviesByTS?theatreId=${theatreId}&screenId=${selectedScreenId}`);
             const data = await response.json();
             
             // Ensure movies correspond to selected theatre and screen
@@ -94,7 +94,7 @@ const handleScreenChange = async (e) => {
         };
 
         try {
-            const response = await fetch('http://localhost:5001/slots', {
+            const response = await fetch('http://localhost:5000/slots', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

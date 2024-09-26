@@ -50,6 +50,7 @@ exports.getMoviesByTS = async(req,res)=>{
   try {
     const {theatreId,screenId} = req.query;
     const movies = await Movie.find({theatre : theatreId,screen:screenId});
+    console.log('getting moviesByTS')
     console.log(movies)
     res.status(200).send(movies);
   } catch (error) {

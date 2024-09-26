@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT || 5000;
 
 const mongoose = require("mongoose");
 mongoose.connect("mongodb+srv://saikiransuguru:7eYEmWV5Nmzrn24m@cluster0.sbi4o.mongodb.net/TheatreDB?retryWrites=true&w=majority&appName=Cluster0",{ useNewUrlParser: true, useUnifiedTopology: true })

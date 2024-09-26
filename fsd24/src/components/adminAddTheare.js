@@ -16,7 +16,7 @@ function AdminTheatres() {
         };
 
         try {
-            const response = await fetch('http://localhost:5001/theatres', {
+            const response = await fetch('http://localhost:5000/theatres', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -30,20 +30,20 @@ const MovieSeatBooking = (props) => {
   useEffect(() => {
     const fetchScreenData = async () => {
       try {
-        const response = await fetch(`http://localhost:5001/screensbyNo?screenNum=${screenNo}&theatreId=${props.theatreId}`);
+        const response = await fetch(`http://localhost:5000/screensbyNo?screenNum=${screenNo}&theatreId=${props.theatreId}`);
         const dataList = await response.json();
         const data = dataList[0];
 
-        const theatreRes = await fetch(`http://localhost:5001/theatres/${data.theatre}`);
+        const theatreRes = await fetch(`http://localhost:5000/theatres/${data.theatre}`);
         const theatreData = await theatreRes.json();
 
         // console.log(data);
 
 
-        const MovieRes = await fetch(`http://localhost:5001/moviesByTS?theatreId=${theatreData._id}&screenId=${data._id}`);
+        const MovieRes = await fetch(`http://localhost:5000/moviesByTS?theatreId=${theatreData._id}&screenId=${data._id}`);
         const MovieData = await MovieRes.json();
-        console.log(MovieData)
-        console.log(MovieData[0].title)
+        // console.log(MovieData)
+        // console.log(MovieData[0].title)
         // setMovieName(`${MovieRes[0].title}`);
         setTheatreName(theatreData.theatrename);
 
@@ -95,7 +95,7 @@ const MovieSeatBooking = (props) => {
     };
 
     try {
-      const response = await fetch('http://localhost:5001/book', {
+      const response = await fetch('http://localhost:5000/book', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -174,9 +174,9 @@ const MovieSeatBooking = (props) => {
   const isBookingRoute = location.pathname.startsWith(`/${theatreName}/${movieName}`);
   return (
     <div className="movie-booking-card">
-      {!isBookingRoute && navigate(`/`)}
+      {/* {!isBookingRoute && navigate(`/`)} */}
       <header className="card-header">
-        <h1 className="card-title">{props.theatre.toUpperCase()} Seat Booking <p style={{color:'white'}}>{movieParam.movie}</p></h1>
+        <h1 className="card-title">{props.theatre.toUpperCase()} Seat Booking <p style={{color:'white'}}>{movieName}</p></h1>
         <p className="card-description">Choose your seats.</p>
       </header>
       <main className="card-content">
@@ -192,11 +192,11 @@ const MovieSeatBooking = (props) => {
           </div>
           <div className="legend-item">
             <div className="legend-color selected"></div>
-            <span>Selected</span>
+            <span>Unavailable</span>
           </div>
           <div className="legend-item">
             <div className="legend-color unavailable"></div>
-            <span>Unavailable</span>
+            <span>Selected</span>
           </div>
         </div>
         <div className="theaterX">
